@@ -17,7 +17,7 @@ class DB {
     
     private function __construct() {
         try{
-            $this->_pdo = new PDO('pgsql:host=127.0.0.1;port=5432;dbname=placar','postgres','postgres');
+            $this->_pdo = new PDO('mysql:host=127.0.0.1;dbname=placar','root','');
             //$this->_pdo->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             die($e->getMessage());
@@ -62,7 +62,7 @@ class DB {
         $valueString = '';
         $values = [];
         foreach($fields as $field => $value){
-            $fieldString .= $field.',';
+            $fieldString .= '`'.$field.'`,';
             $valueString .= '?,';
             $values[] = $value;
         }

@@ -1,9 +1,9 @@
-CREATE TABLE score(
-        id SERIAL PRIMARY KEY,
-	nome VARCHAR(50),
-	pontos INTEGER
-);
+CREATE TABLE `placar`.`score` 
+( `id` INT NOT NULL AUTO_INCREMENT ,
+ `nome` VARCHAR(50) NOT NULL , `pontos` INT NOT NULL ,
+ PRIMARY KEY (`id`)) 
+ENGINE = MyISAM;
 
-insert into score(nome, pontos) values ('player1',0);
+INSERT INTO `score`(`id`, `nome`, `pontos`) VALUES (1,'player1',0)
 
-insert into score(nome, pontos) values ('player2',0);
+INSERT INTO `score`(`id`, `nome`, `pontos`) VALUES (2,'player2',0)
