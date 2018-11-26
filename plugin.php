@@ -39,7 +39,7 @@ $player2placar = $placar[1]->pontos;
                 -webkit-box-sizing: content-box;
                 -moz-box-sizing: content-box;
                 box-sizing: content-box;
-                width: 200px;
+                width: 210px;
                 height: 25px;
                 top: 7px;
                 left: 20px;
@@ -47,9 +47,9 @@ $player2placar = $placar[1]->pontos;
                 padding: 10px 0px;
                 overflow: hidden;
                 //border: 1px solid;
-                font: normal 34px/1 "Acme", Helvetica, sans-serif;
+                font: normal 30px/1 "Acme", Helvetica, sans-serif;
                 color: rgba(0,0,0,1);
-                text-align: left;
+                text-align: center;
                 -o-text-overflow: ellipsis;
                 text-transform: uppercase;
                 text-overflow: ellipsis;
@@ -66,7 +66,7 @@ $player2placar = $placar[1]->pontos;
                 padding: 10px 0px;
                 overflow: hidden;
                 //border: 1px solid;
-                font: normal 44px/1 "Acme", Helvetica, sans-serif;
+                font: normal 40px/1 "Acme", Helvetica, sans-serif;
                 color: rgba(255,255,255,1);
                 text-align: right;
                 -o-text-overflow: ellipsis;
@@ -78,17 +78,17 @@ $player2placar = $placar[1]->pontos;
                 -webkit-box-sizing: content-box;
                 -moz-box-sizing: content-box;
                 box-sizing: content-box;
-                width: 200px;
+                width: 210px;
                 height: 25px;
                 top: 7px;
-                left: 420px;
+                left: 410px;
                 cursor: pointer;
                 padding: 10px 0px;
                 overflow: hidden;
                 //border: 1px solid;
-                font: normal 34px/1 "Acme", Helvetica, sans-serif;
+                font: normal 30px/1 "Acme", Helvetica, sans-serif;
                 color: rgba(0,0,0,1);
-                text-align: right;
+                text-align: center;
                 -o-text-overflow: ellipsis;
                 text-transform: uppercase;
                 text-overflow: ellipsis;
@@ -105,7 +105,7 @@ $player2placar = $placar[1]->pontos;
                 padding: 10px 0px;
                 overflow: hidden;
                 //border: 1px solid;
-                font: normal 44px/1 "Acme", Helvetica, sans-serif;
+                font: normal 40px/1 "Acme", Helvetica, sans-serif;
                 color: rgba(255,255,255,1);
                 text-align: left;
                 -o-text-overflow: ellipsis;
@@ -129,10 +129,22 @@ $player2placar = $placar[1]->pontos;
                 |
             </div>
             <div style='position:absolute;' class="p1p">
-                <?php echo $player1placar; ?>
+                <?php 
+                    if($player1placar<=9){
+                        echo "0".$player1placar;
+                    } else {
+                    echo $player1placar; 
+                    }
+                ?>
             </div>
             <div style='position:absolute;' class="p2p">
-                <?php echo $player2placar; ?>
+                <?php
+                    if($player2placar<=9){
+                        echo "0".$player2placar;
+                    } else {
+                    echo $player2placar; 
+                    }
+                ?>    
             </div>
         </div>
         
