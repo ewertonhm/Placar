@@ -136,7 +136,7 @@
             <div data-role="header" data-position="fixed"><h1>Placar</h1></div>
             <div data-role="main" class="ui-content">
                 <p>Para placar, acesse:</p>
-                <p>192.168.xx.xxx/placar/placar</p>
+                <a href="plugin.php">http://ipdamaquina/Placar/plugin</a> 
             </div>
             <div data-role="footer" data-position="fixed">
                 <p><a href="#index" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Voltar a pagina inicial</a> </p><h3>Copyright União Gaming • 2018 </h3>
