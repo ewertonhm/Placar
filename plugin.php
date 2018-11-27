@@ -18,6 +18,7 @@ $player2placar = $placar[1]->pontos;
     <head>
         <title>Placar</title>
         <meta charset="UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.32/angular.min.js"></script>
         <style>
             .enjoy-css {
                 -webkit-box-sizing: content-box;
@@ -116,43 +117,70 @@ $player2placar = $placar[1]->pontos;
         <link async href="http://fonts.googleapis.com/css?family=Acme" data-generated="http://enjoycss.com" rel="stylesheet" type="text/css"/>
     </head>
     
-    <body>
-        <div style='position:relative; top:0px; left:0px; '>
+    <body>       
+        <div style='position:relative; top:0px; left:0px;'>
             <img src=img/tema.jpg border=0>
-            <div style='position:absolute; ' class="p1">
-                <?php echo $player1; ?>
-            </div>
-            <div style='position:absolute;' class="p2">
-                <?php echo $player2; ?>
+            <div ng-app="playera" ng-controller="controllera" ng-init="display_data()" >
+                <div style='position:absolute; ' class="p1">
+                    <div ng-repeat="x in names">
+                        {{x.nome}}
+                    </div>
+                </div>
+                <div style='position:absolute;' class="p1p">
+                    <?php 
+                        if($player1placar<=9){
+                            echo "0".$player1placar;
+                        } else {
+                        echo $player1placar; 
+                        }
+                    ?>
+                </div>
             </div>
             <div style='position:absolute; top:15px; left:320px;' class="enjoy-css">
                 |
             </div>
-            <div style='position:absolute;' class="p1p">
-                <?php 
-                    if($player1placar<=9){
-                        echo "0".$player1placar;
-                    } else {
-                    echo $player1placar; 
-                    }
-                ?>
-            </div>
-            <div style='position:absolute;' class="p2p">
-                <?php
-                    if($player2placar<=9){
-                        echo "0".$player2placar;
-                    } else {
-                    echo $player2placar; 
-                    }
-                ?>    
-            </div>
+            <div ng-app="playerb" ng-controller="controllerb" ng-init="display_data()" >
+                <div style='position:absolute;' class="p2">    
+                    <div ng-repeat="x in names">
+                        {{x.nome}}
+                    </div>
+                </div>    
+                <div style='position:absolute;' class="p2p">
+                    <?php
+                        if($player2placar<=9){
+                            echo "0".$player2placar;
+                        } else {
+                        echo $player2placar; 
+                        }
+                    ?>    
+                </div>
+            </div>    
         </div>
-        
             
-        <script>
-            function timedRefresh(timeoutPeriod) {
-                    setTimeout("location.reload(true);",timeoutPeriod);
+        <script>            
+            var appa = angular.module("playera",[]);
+            appa.controller("controllera", function($scope, $http){
+                $scope.display_data = function(){
+                    $http.get("json1.php")
+                    .success(function(data){
+                        $scope.names = data;
+                    });
                 }
+            });
+            
+            var appb = angular.module("playerb",[]);
+            appb.controller("controllerb", function($scope, $http){
+                $scope.display_data = function(){
+                    $http.get("json2.php")
+                    .success(function(data){
+                        $scope.names = data;
+                    });
+                }
+            });
+                
+            function timedRefresh(timeoutPeriod) {
+                setTimeout("location.reload(true);",timeoutPeriod);
+            }
             window.onload = timedRefresh(5000);
         </script>
     </body>
