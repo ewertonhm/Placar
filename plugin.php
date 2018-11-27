@@ -120,46 +120,48 @@ $player2placar = $placar[1]->pontos;
     <body>       
         <div style='position:relative; top:0px; left:0px;'>
             <img src=img/tema.jpg border=0>
-            <div ng-app="playera" ng-controller="controllera" ng-init="display_data()" >
-                <div style='position:absolute; ' class="p1">
+            <div ng-app="players">
+                <div ng-controller="playera" ng-init="display_data()" >
                     <div ng-repeat="x in names">
-                        {{x.nome}}
-                    </div>
+                        <div style='position:absolute; ' class="p1">
+                            {{x.nome}}
+                        </div>
+                        <div style='position:absolute;' class="p1p">
+                            <?php 
+                                if($player1placar<=9){
+                                    echo "0{{x.pontos}}";
+                                } else {
+                                echo "{{x.pontos}}"; 
+                                }
+                            ?>
+                        </div>
+                    </div>    
                 </div>
-                <div style='position:absolute;' class="p1p">
-                    <?php 
-                        if($player1placar<=9){
-                            echo "0".$player1placar;
-                        } else {
-                        echo $player1placar; 
-                        }
-                    ?>
+                <div style='position:absolute; top:15px; left:320px;' class="enjoy-css">
+                    |
                 </div>
-            </div>
-            <div style='position:absolute; top:15px; left:320px;' class="enjoy-css">
-                |
-            </div>
-            <div ng-app="playerb" ng-controller="controllerb" ng-init="display_data()" >
-                <div style='position:absolute;' class="p2">    
+                <div ng-controller="playerb" ng-init="display_data()" >
                     <div ng-repeat="x in names">
-                        {{x.nome}}
+                        <div style='position:absolute;' class="p2">    
+                            {{x.nome}}
+                        </div>    
+                        <div style='position:absolute;' class="p2p">
+                            <?php
+                                if($player2placar<=9){
+                                    echo "0{{x.pontos}}";
+                                } else {
+                                echo "{{x.pontos}}"; 
+                                }
+                            ?>    
+                        </div>
                     </div>
                 </div>    
-                <div style='position:absolute;' class="p2p">
-                    <?php
-                        if($player2placar<=9){
-                            echo "0".$player2placar;
-                        } else {
-                        echo $player2placar; 
-                        }
-                    ?>    
-                </div>
-            </div>    
+            </div>
         </div>
             
         <script>            
-            var appa = angular.module("playera",[]);
-            appa.controller("controllera", function($scope, $http){
+            var app = angular.module("players",[]);
+            app.controller("playera", function($scope, $http){
                 $scope.display_data = function(){
                     $http.get("json1.php")
                     .success(function(data){
@@ -168,8 +170,7 @@ $player2placar = $placar[1]->pontos;
                 }
             });
             
-            var appb = angular.module("playerb",[]);
-            appb.controller("controllerb", function($scope, $http){
+            app.controller("playerb", function($scope, $http){
                 $scope.display_data = function(){
                     $http.get("json2.php")
                     .success(function(data){
